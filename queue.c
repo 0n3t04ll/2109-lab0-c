@@ -160,8 +160,6 @@ int q_size(queue_t *q)
     /* Remember: It should operate in O(1) time */
     if (!q)
         return 0;
-    if (q->size == 0)
-        return 0;
     return q->size;
 }
 
