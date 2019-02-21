@@ -39,6 +39,17 @@ void q_free(queue_t *q)
 {
     /* How about freeing the list elements and the strings? */
     /* Free queue structure */
+	if(!q)
+		return;
+	list_ele_t *curr  = q->head;
+	while(curr != NULL)
+	{
+		list_ele_t *tmp = curr; //temp element in order to free the space
+		if(curr->value)
+			free(curr->value);
+		curr = curr->next; //literate the queue
+		free(tmp);
+	}
     free(q);
 }
 
