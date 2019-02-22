@@ -537,18 +537,18 @@ int main(int argc, char *argv[])
 
     while ((c = getopt(argc, argv, "hv:f:l:")) != -1) {
         switch (c) {
-        case 'h':
+        case 'h':  // help
             usage(argv[0]);
             break;
-        case 'f':
+        case 'f':  // file
             strncpy(buf, optarg, BUFSIZE);
             buf[BUFSIZE - 1] = '\0';
-            infile_name = buf;
+            infile_name = buf;  // test file name
             break;
-        case 'v':
+        case 'v':  // verbose level
             level = atoi(optarg);
             break;
-        case 'l':
+        case 'l':  // log file
             strncpy(lbuf, optarg, BUFSIZE);
             buf[BUFSIZE - 1] = '\0';
             logfile_name = lbuf;
@@ -559,9 +559,10 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    queue_init();
-    init_cmd();
-    console_init();
+    queue_init();    // set q ptr, file_cnt, signalhandler
+    init_cmd();      // use linked list to link global cmd structure, paramter
+                     // structure
+    console_init();  // same with above but linked queue function
     set_verblevel(level);
     if (level > 1) {
         set_echo(true);

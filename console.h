@@ -8,7 +8,7 @@ typedef bool (*cmd_function)(int argc, char *argv[]);
 typedef struct CELE cmd_ele, *cmd_ptr;
 struct CELE {
     char *name;
-    cmd_function operation;
+    cmd_function operation;  // funtion ptr point to cmd function
     char *documentation;
     cmd_ptr next;
 };
@@ -19,11 +19,11 @@ typedef void (*setter_function)(int oldval);
 /* Integer-valued parameters */
 typedef struct PELE param_ele, *param_ptr;
 struct PELE {
-    char *name;
-    int *valp;
+    char *name;  // parameter name
+    int *valp;   //?
     char *documentation;
     /* Function that gets called whenever parameter changes */
-    setter_function setter;
+    setter_function setter;  // supply function
     param_ptr next;
 };
 

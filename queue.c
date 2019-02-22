@@ -139,11 +139,10 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
     if (q->size <= 1)
         q->tail = q->head;
 
-    //bool sp_flag = false;
     if (sp) {
         strncpy(sp, tmp->value, bufsize - 1);
         sp[bufsize - 1] = '\0';
-    //    sp_flag = true;
+        //    sp_flag = true;
     }
     free(tmp->value);
     free(tmp);
